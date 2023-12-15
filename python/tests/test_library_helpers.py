@@ -22,8 +22,7 @@ def test_get_model_name_from_cell_data():
 
 @pytest.fixture
 def ai_config_runtime():
-    runtime = AIConfigRuntime.create("Untitled AIConfig")
-    return runtime
+    return AIConfigRuntime.create("Untitled AIConfig")
 
 
 def test_collect_prompt_references():

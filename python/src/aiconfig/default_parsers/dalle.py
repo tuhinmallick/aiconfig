@@ -32,16 +32,15 @@ def refine_image_completion_params(model_settings):
     """
     supported_keys = {"model", "n", "quality", "response_format", "size", "style"}
 
-    completion_data = {}
-    for key in model_settings:
-        if key.lower() in supported_keys:
-            completion_data[key.lower()] = model_settings[key]
-
-    return completion_data
+    return {
+        key.lower(): model_settings[key]
+        for key in model_settings
+        if key.lower() in supported_keys
+    }
 
 
 def construct_output(image_data: Image, execution_count: int) -> Output:
-    output = ExecuteResult(
+    return ExecuteResult(
         **{
             "output_type": "execute_result",
             "data": image_data.b64_json or image_data.url,
@@ -50,7 +49,6 @@ def construct_output(image_data: Image, execution_count: int) -> Output:
             "mime_type": "image/png",
         }
     )
-    return output
 
 
 class DalleImageGenerationParser(ParameterizedModelParser):
@@ -198,10 +196,7 @@ class DalleImageGenerationParser(ParameterizedModelParser):
         if not output:
             return ""
 
-        # TODO (rossdanlm): Handle multiple outputs in list
-        # https://github.com/lastmile-ai/aiconfig/issues/467
-        if output.output_type == "execute_result":
-            if isinstance(output.data, str):
-                return output.data
-        else:
+        if output.output_type != "execute_result":
             return ""
+        if isinstance(output.data, str):
+            return output.data

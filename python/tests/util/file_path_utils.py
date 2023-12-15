@@ -15,5 +15,4 @@ def get_absolute_file_path_from_relative(
         str: The absolute file path of the target file.
     """
     current_file_path = os.path.dirname(os.path.abspath(working_file_path))
-    absolute_file_path = os.path.join(current_file_path, relative_file_path)
-    return absolute_file_path
+    return os.path.join(current_file_path, relative_file_path)

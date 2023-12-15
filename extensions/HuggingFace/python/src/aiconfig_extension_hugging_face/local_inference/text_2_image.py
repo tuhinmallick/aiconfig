@@ -58,14 +58,13 @@ def refine_pipeline_creation_params(model_settings: Dict[str, Any]) -> List[Dict
 
     pipeline_creation_params : Dict[str, Any] = {}
     completion_params : Dict[str, Any] = {}
-    for key in model_settings:
+    for key, value in model_settings.items():
         if key.lower() in supported_keys:
             pipeline_creation_params[key.lower()] = model_settings[key]
+        elif key.lower() == "kwargs" and isinstance(value, Dict):
+            completion_params.update(model_settings[key])
         else:
-            if key.lower() == "kwargs" and isinstance(model_settings[key], Dict):
-                completion_params.update(model_settings[key])
-            else:
-                completion_params[key.lower()] = model_settings[key]
+            completion_params[key.lower()] = model_settings[key]
 
     return [pipeline_creation_params, completion_params]
 
@@ -108,11 +107,11 @@ def refine_image_completion_params(unfiltered_completion_params: Dict[str, Any])
         "requires_safety_checker",
     }
 
-    completion_params : Dict[str, Any] = {}
-    for key in unfiltered_completion_params:
-        if key.lower() in supported_keys:
-            completion_params[key.lower()] = unfiltered_completion_params[key]
-
+    completion_params: Dict[str, Any] = {
+        key.lower(): unfiltered_completion_params[key]
+        for key in unfiltered_completion_params
+        if key.lower() in supported_keys
+    }
     return completion_params
 
 
@@ -206,14 +205,13 @@ class HuggingFaceText2ImageDiffusor(ParameterizedModelParser):
         # TODO (rossdanlm): Handle attachments for image generation to save outputs
         # https://github.com/lastmile-ai/aiconfig/issues/417
         model_metadata = ai_config.get_model_metadata(data, self.id())
-        prompt = Prompt(
+        return Prompt(
             name=prompt_name,
             input=prompt_input,
             metadata=PromptMetadata(
                 model=model_metadata, parameters=parameters, **completion_params
             ),
         )
-        return prompt
 
     async def deserialize(
         self,
@@ -333,13 +331,10 @@ If that doesn't work, you can also try less computationally intensive models.
         if output is None:
             return ""
 
-        # TODO (rossdanlm): Handle multiple outputs in list
-        # https://github.com/lastmile-ai/aiconfig/issues/467
-        if output.output_type == "execute_result":
-            if isinstance(output.data, str):
-                return output.data
-        else:
+        if output.output_type != "execute_result":
             return ""
+        if isinstance(output.data, str):
+            return output.data
 
     def _get_device(self) -> str:
         if torch.cuda.is_available():

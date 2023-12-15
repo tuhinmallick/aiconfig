@@ -14,8 +14,7 @@ from aiconfig.schema import (
 
 @pytest.fixture
 def ai_config_runtime():
-    runtime = AIConfigRuntime.create("Untitled AIConfig")
-    return runtime
+    return AIConfigRuntime.create("Untitled AIConfig")
 
 
 def test_create_empty_config_with_defaults(ai_config_runtime):
@@ -262,13 +261,12 @@ def test_delete_nonexistent_parameter(ai_config_runtime: AIConfigRuntime):
 
 @pytest.fixture
 def ai_config():
-    config = AIConfig(
+    return AIConfig(
         name="Untitled AIConfig",
         schema_version="latest",
         metadata=ConfigMetadata(),
         prompts=[],
     )
-    return config
 
 
 def test_set_global_parameter(ai_config: AIConfig):
@@ -527,7 +525,7 @@ def test_add_output_existing_prompt_no_overwrite(ai_config_runtime: AIConfigRunt
 
     ai_config_runtime.delete_output("GreetingPrompt")
 
-    assert ai_config_runtime.get_latest_output("GreetingPrompt") == None
+    assert ai_config_runtime.get_latest_output("GreetingPrompt") is None
 
 
 def test_extract_override_settings(ai_config_runtime: AIConfigRuntime):

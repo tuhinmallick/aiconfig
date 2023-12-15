@@ -79,19 +79,18 @@ def refine_chat_completion_params(model_settings: Dict[str, Any]) -> Dict[str, A
         "num_assistant_tokens_schedule",
     }
 
-    completion_data = {}
-    for key in model_settings:
-        if key.lower() in supported_keys:
-            completion_data[key.lower()] = model_settings[key]
-
-    return completion_data
+    return {
+        key.lower(): model_settings[key]
+        for key in model_settings
+        if key.lower() in supported_keys
+    }
 
 
 def construct_regular_output(result: Dict[str, str], execution_count: int) -> Output:
     """
     Construct regular output per response result, without streaming enabled
     """
-    output = ExecuteResult(
+    return ExecuteResult(
         **{
             "output_type": "execute_result",
             "data": result["generated_text"],
@@ -99,7 +98,6 @@ def construct_regular_output(result: Dict[str, str], execution_count: int) -> Ou
             "metadata": {},
         }
     )
-    return output
 
 
 
@@ -164,14 +162,13 @@ class LLamaGuardParser(ParameterizedModelParser):
         data.pop("prompt", None)
 
         model_metadata = ai_config.get_model_metadata(data, self.id())
-        prompt = Prompt(
+        return Prompt(
             name=prompt_name,
             input=prompt_input,
             metadata=PromptMetadata(
                 model=model_metadata, parameters=parameters, **kwargs
             ),
         )
-        return prompt
 
     async def deserialize(
         self,
@@ -267,8 +264,7 @@ class LLamaGuardParser(ParameterizedModelParser):
         if output is None:
             return ""
 
-        if output.output_type == "execute_result":
-            if isinstance(output.data, str):
-                return output.data
-        else:
+        if output.output_type != "execute_result":
             return ""
+        if isinstance(output.data, str):
+            return output.data

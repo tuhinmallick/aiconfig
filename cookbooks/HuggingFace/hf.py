@@ -55,12 +55,11 @@ def refine_chat_completion_params(model_settings):
         "decoder_input_details",
     }
 
-    completion_data = {}
-    for key in model_settings:
-        if key.lower() in supported_keys:
-            completion_data[key.lower()] = model_settings[key]
-
-    return completion_data
+    return {
+        key.lower(): model_settings[key]
+        for key in model_settings
+        if key.lower() in supported_keys
+    }
 
 
 def construct_stream_output(
@@ -115,7 +114,7 @@ def construct_regular_output(response, response_includes_details: bool) -> Outpu
         data = response.generated_text
         metadata = {"details": response.details}
 
-    output = ExecuteResult(
+    return ExecuteResult(
         **{
             "output_type": "execute_result",
             "data": data,
@@ -123,7 +122,6 @@ def construct_regular_output(response, response_includes_details: bool) -> Outpu
             "metadata": metadata,
         }
     )
-    return output
 
 
 class HuggingFaceTextParser(ParameterizedModelParser):
@@ -248,23 +246,20 @@ class HuggingFaceTextParser(ParameterizedModelParser):
 
         # if stream enabled in runtime options and config, then stream. Otherwise don't stream.
         stream = (options.stream if options else False) and (
-            not "stream" in completion_data or completion_data.get("stream") != False
+            "stream" not in completion_data
+            or completion_data.get("stream") != False
         )
 
         response = self.client.text_generation(**completion_data)
         response_is_detailed = completion_data.get("details", False)
-        outputs = []
-
         # HF Text Generation api doesn't support multiple outputs. Expect only one output.
         # Output spec: .data to to the actual string, and metadata to the details and any other info present.
         if not stream:
             output = construct_regular_output(response, response_is_detailed)
-            outputs.append(output)
         else:
             # Handles stream callback
             output = construct_stream_output(response, response_is_detailed, options)
-            outputs.append(output)
-
+        outputs = [output]
         prompt.outputs = outputs
         return prompt.outputs
 
@@ -280,8 +275,7 @@ class HuggingFaceTextParser(ParameterizedModelParser):
         if not output:
             return ""
 
-        if output.output_type == "execute_result":
-            if isinstance(output.data, str):
-                return output.data
-        else:
+        if output.output_type != "execute_result":
             return ""
+        if isinstance(output.data, str):
+            return output.data

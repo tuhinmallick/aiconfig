@@ -3,8 +3,6 @@ import os
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    pass
-
     from aiconfig.schema import InferenceSettings
 
     from ..schema import AIConfig
@@ -12,7 +10,7 @@ if TYPE_CHECKING:
 
 def get_api_key_from_environment(api_key_name: str):
     if api_key_name not in os.environ:
-        raise Exception("Missing API key '{}' in environment".format(api_key_name))
+        raise Exception(f"Missing API key '{api_key_name}' in environment")
 
     return os.environ[api_key_name]
 
@@ -36,15 +34,11 @@ def extract_override_settings(
         InferenceSettings: The inference settings with overrides from global settings.
     """
     model_name = model_id
-    global_model_settings = config_runtime.get_global_settings(model_name)
-
-    if global_model_settings:
-        # Identify the settings that differ from global settings
-        override_settings = {
+    if global_model_settings := config_runtime.get_global_settings(model_name):
+        return {
             key: copy.deepcopy(inference_settings[key])
             for key in inference_settings
             if key not in global_model_settings
             or global_model_settings.get(key) != inference_settings[key]
         }
-        return override_settings
     return inference_settings

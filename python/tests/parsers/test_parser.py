@@ -8,8 +8,7 @@ from ..util.mock_parser import MockModelParser
 
 @pytest.fixture
 def ai_config_runtime():
-    runtime = AIConfigRuntime.create("Untitled AIConfig")
-    return runtime
+    return AIConfigRuntime.create("Untitled AIConfig")
 
 
 def test_get_model_settings(ai_config_runtime: AIConfigRuntime):

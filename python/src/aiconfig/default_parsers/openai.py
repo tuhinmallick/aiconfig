@@ -64,17 +64,17 @@ class OpenAIInference(ParameterizedModelParser):
         # Combine conversation data with any extra keyword args
         conversation_data = {**data}
 
-        if not "messages" in conversation_data:
+        if "messages" not in conversation_data:
             raise ValueError("Data must have `messages` array to match openai api spec")
 
-        # Find first system prompt. Every prompt in the config will bet set to use this system prompt.
-        system_prompt = None
-        for message in conversation_data["messages"]:
-            if "role" in message and message["role"] == "system":
-                # Note: system prompt for openai represented will be an object with content and role attributes {content: str, role: str}
-                system_prompt = message
-                break
-
+        system_prompt = next(
+            (
+                message
+                for message in conversation_data["messages"]
+                if "role" in message and message["role"] == "system"
+            ),
+            None,
+        )
         # Get the global settings for the model
         model_name = (
             conversation_data["model"] if "model" in conversation_data else self.id()
@@ -92,7 +92,7 @@ class OpenAIInference(ParameterizedModelParser):
         while i < len(conversation_data["messages"]):
             messsage = conversation_data["messages"][i]
             role = messsage["role"]
-            if role == "user" or role == "function":
+            if role in ["user", "function"]:
                 # Serialize User message as a prompt and save the assistant response as an output
                 assistant_response = None
                 if i + 1 < len(conversation_data["messages"]):
@@ -100,12 +100,11 @@ class OpenAIInference(ParameterizedModelParser):
                     if next_message["role"] == "assistant":
                         assistant_response = next_message
                         i += 1
-                new_prompt_name = f"{prompt_name}_{len(prompts) + 1}"
-
                 input = (
                     messsage["content"] if role == "user" else PromptInput(**messsage)
                 )
 
+                new_prompt_name = f"{prompt_name}_{len(prompts) + 1}"
                 prompt = Prompt(
                     name=new_prompt_name,
                     input=input,
@@ -131,7 +130,7 @@ class OpenAIInference(ParameterizedModelParser):
             i += 1
 
         if prompts:
-            prompts[len(prompts) - 1].name = prompt_name
+            prompts[-1].name = prompt_name
 
         event = CallbackEvent("on_serialize_complete", __name__, {"result": prompts})
         await ai_config.callback_manager.run_callbacks(event)
@@ -178,9 +177,9 @@ class OpenAIInference(ParameterizedModelParser):
                 )
 
             # Default to always use chat context
-            if not hasattr(prompt.metadata, "remember_chat_context") or (
-                hasattr(prompt.metadata, "remember_chat_context")
-                and prompt.metadata.remember_chat_context != False
+            if (
+                not hasattr(prompt.metadata, "remember_chat_context")
+                or prompt.metadata.remember_chat_context != False
             ):
                 # handle chat history. check previous prompts for the same model. if same model, add prompt and its output to completion data if it has a completed output
                 for i, previous_prompt in enumerate(aiconfig.prompts):
@@ -270,9 +269,7 @@ class OpenAIInference(ParameterizedModelParser):
                 if key != "choices"
             }
             for i, choice in enumerate(response.get("choices")):
-                response_without_choices.update(
-                    {"finish_reason": choice.get("finish_reason")}
-                )
+                response_without_choices["finish_reason"] = choice.get("finish_reason")
                 output = ExecuteResult(
                     **{
                         "output_type": "execute_result",
@@ -347,14 +344,13 @@ class OpenAIInference(ParameterizedModelParser):
         if not output:
             return ""
 
-        if output.output_type == "execute_result":
-            message = output.data
-            if message.get("content"):
-                return message.get("content")
-            elif message.get("function_call"):
-                return message.get("function_call")
-            else:
-                return ""
+        if output.output_type != "execute_result":
+            return ""
+        message = output.data
+        if message.get("content"):
+            return message.get("content")
+        elif message.get("function_call"):
+            return message.get("function_call")
         else:
             return ""
 
@@ -443,12 +439,11 @@ def refine_chat_completion_params(model_settings):
         "user",
     }
 
-    completion_data = {}
-    for key in supported_keys:
-        if key in model_settings:
-            completion_data[key] = model_settings[key]
-
-    return completion_data
+    return {
+        key: model_settings[key]
+        for key in supported_keys
+        if key in model_settings
+    }
 
 
 def add_prompt_as_message(
@@ -490,8 +485,7 @@ def add_prompt_as_message(
 
         messages.append(message_data)
 
-    output = aiconfig.get_latest_output(prompt)
-    if output:
+    if output := aiconfig.get_latest_output(prompt):
         if output.output_type == "execute_result":
             output_message = output.data
             if output_message["role"] == "assistant":
