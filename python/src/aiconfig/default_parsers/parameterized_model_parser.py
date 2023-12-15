@@ -103,12 +103,7 @@ class ParameterizedModelParser(ModelParser):
 
         return await execute_recursive(prompt.name)
 
-    def resolve_prompt_template(
-        prompt_template: str,
-        prompt: Prompt,
-        ai_config: "AIConfigRuntime",
-        params: Optional[JSONObject] = {},
-    ):
+    def resolve_prompt_template(self, prompt: Prompt, ai_config: "AIConfigRuntime", params: Optional[JSONObject] = {}):
         """
         Resolves a templated string with the provided parameters (applied from the AIConfig as well as passed in params).
 
@@ -121,7 +116,7 @@ class ParameterizedModelParser(ModelParser):
         Returns:
             str: The resolved string.
         """
-        return resolve_prompt_string(prompt, params, ai_config, prompt_template)
+        return resolve_prompt_string(prompt, params, ai_config, self)
 
     def get_prompt_template(self, prompt: Prompt, aiConfig: "AIConfigRuntime") -> str:
         """

@@ -25,9 +25,7 @@ async def assistant_response(prompt):
     dest_prompt = topic.lower()
 
     await config.run(dest_prompt, params)
-    response = config.get_output_text(dest_prompt)
-
-    return response
+    return config.get_output_text(dest_prompt)
 
 
 # Streamlit Setup

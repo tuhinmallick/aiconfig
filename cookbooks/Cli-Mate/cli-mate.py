@@ -20,10 +20,7 @@ from aiconfig.schema import ExecuteResult, Prompt
 
 
 def deprefix(s: str, pfx: str) -> str:
-    if s.startswith(pfx):  # Checks if the string starts with the given prefix
-        return s[len(pfx) :]  # If true, returns the string without the prefix
-    else:
-        return s
+    return s[len(pfx) :] if s.startswith(pfx) else s
 
 
 class InterruptException(Exception):
@@ -71,10 +68,10 @@ async def mod_code(
         source_code = file.read()
 
         answer = await get_mod_result(aiconfig_path, source_code, question)
-        # TODO
-        s_answer = str(answer)
-
         if update_file:
+            # TODO
+            s_answer = str(answer)
+
             # Here you would add your logic related to how the original code needs to be modified based on the answer
             with open(source_code_file, "w", encoding="utf8") as file:
                 file.write(s_answer)

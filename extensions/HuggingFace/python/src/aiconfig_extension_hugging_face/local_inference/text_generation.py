@@ -71,19 +71,18 @@ def refine_chat_completion_params(model_settings: Dict[str, Any]) -> Dict[str, A
         "num_assistant_tokens_schedule"
     }
 
-    completion_data = {}
-    for key in model_settings:
-        if key.lower() in supported_keys:
-            completion_data[key.lower()] = model_settings[key]
-
-    return completion_data
+    return {
+        key.lower(): model_settings[key]
+        for key in model_settings
+        if key.lower() in supported_keys
+    }
 
 
 def construct_regular_output(result: Dict[str, str], execution_count: int) -> Output:
     """
     Construct regular output per response result, without streaming enabled
     """
-    output = ExecuteResult(
+    return ExecuteResult(
         **{
             "output_type": "execute_result",
             "data": result["generated_text"],
@@ -91,7 +90,6 @@ def construct_regular_output(result: Dict[str, str], execution_count: int) -> Ou
             "metadata": {},
         }
     )
-    return output
 
 def construct_stream_output(
     streamer: TextIteratorStreamer,
@@ -173,14 +171,13 @@ class HuggingFaceTextGenerationTransformer(ParameterizedModelParser):
         data.pop("prompt", None)
 
         model_metadata = ai_config.get_model_metadata(data, self.id())
-        prompt = Prompt(
+        return Prompt(
             name=prompt_name,
             input=prompt_input,
             metadata=PromptMetadata(
                 model=model_metadata, parameters=parameters, **kwargs
             ),
         )
-        return prompt
 
     async def deserialize(
         self,
@@ -224,7 +221,7 @@ class HuggingFaceTextGenerationTransformer(ParameterizedModelParser):
         """
         completion_data = await self.deserialize(prompt, aiconfig, options, parameters)
         completion_data["text_inputs"] = completion_data.pop("prompt", None)
-        
+
         model_name : str = aiconfig.get_model_name(prompt)
         if isinstance(model_name, str) and model_name not in self.generators:
             self.generators[model_name] = pipeline('text-generation', model=model_name)
@@ -233,7 +230,8 @@ class HuggingFaceTextGenerationTransformer(ParameterizedModelParser):
         # if stream enabled in runtime options and config, then stream. Otherwise don't stream.
         streamer = None
         should_stream = (options.stream if options else False) and (
-            not "stream" in completion_data or completion_data.get("stream") != False
+            "stream" not in completion_data
+            or completion_data.get("stream") != False
         )
         if should_stream:
             # TODO (rossdanlm): I noticed that some models are incohorent when used as a tokenizer for streaming
@@ -257,7 +255,7 @@ class HuggingFaceTextGenerationTransformer(ParameterizedModelParser):
                 raise ValueError("Sorry, TextIteratorStreamer does not support multiple return sequences, please set `num_return_sequences` to 1")
             if not streamer:
                 raise ValueError("Stream option is selected but streamer is not initialized")
-            
+
             # For streaming, cannot call `generator` directly otherwise response will be blocking
             thread = threading.Thread(target=generator, kwargs=completion_data)
             thread.start()
@@ -280,10 +278,7 @@ class HuggingFaceTextGenerationTransformer(ParameterizedModelParser):
         if output is None:
             return ""
 
-        # TODO (rossdanlm): Handle multiple outputs in list
-        # https://github.com/lastmile-ai/aiconfig/issues/467
-        if output.output_type == "execute_result":
-            if isinstance(output.data, str):
-                return output.data
-        else:
+        if output.output_type != "execute_result":
             return ""
+        if isinstance(output.data, str):
+            return output.data

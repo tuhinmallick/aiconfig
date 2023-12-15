@@ -166,13 +166,12 @@ class ModelParser(ABC):
         model_metadata = prompt.metadata.model if prompt.metadata else None
 
         if model_metadata is None:
-            # Use Default Model
-            default_model = aiconfig.get_default_model()
-            if not default_model:
+            if default_model := aiconfig.get_default_model():
+                return aiconfig.get_global_settings(default_model)
+            else:
                 raise KeyError(
                     f"No default model specified in AIConfigMetadata, and prompt `{prompt.name}` does not specify a model."
                 )
-            return aiconfig.get_global_settings(default_model)
         elif isinstance(model_metadata, str):
             # Use Global settings
             return aiconfig.get_global_settings(model_metadata)
@@ -196,11 +195,7 @@ def print_stream_callback(data, accumulated_data, index: int):
     """
     Default streamCallback function that prints the output to the console.
     """
-    print(
-        "\ndata: {}\naccumulated_data:{}\nindex:{}\n".format(
-            data, accumulated_data, index
-        )
-    )
+    print(f"\ndata: {data}\naccumulated_data:{accumulated_data}\nindex:{index}\n")
 
 
 def print_stream_delta(data, accumulated_data, index: int):
@@ -208,8 +203,7 @@ def print_stream_delta(data, accumulated_data, index: int):
     Default streamCallback function that prints the output to the console.
     """
     if "content" in data:
-        content = data["content"]
-        if content:
+        if content := data["content"]:
             print(content, end="", flush=True)
 
 

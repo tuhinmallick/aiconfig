@@ -113,27 +113,27 @@ class AIConfigRuntime(AIConfig):
         Raises:
             Exception: If the request to the API is not successful.
         """
-        if workbook_id:
-            API_ENDPOINT = "http://lastmileai.dev/api"
+        if not workbook_id:
+            return
+        # Make sure to set the API key
+        lastmileapi_token = os.environ.get("LASTMILE_API_TOKEN")
 
-            # Make sure to set the API key
-            lastmileapi_token = os.environ.get("LASTMILE_API_TOKEN")
+        if not lastmileapi_token:
+            raise ValueError("LASTMILE_API_TOKEN environment variable is not set.")
 
-            if not lastmileapi_token:
-                raise ValueError("LASTMILE_API_TOKEN environment variable is not set.")
+        headers = {"Authorization": f"Bearer {lastmileapi_token}"}
+        API_ENDPOINT = "http://lastmileai.dev/api"
+        url = f"{API_ENDPOINT}/workbooks/aiconfig?id={workbook_id}"
+        resp = requests.get(url, headers=headers)
 
-            headers = {"Authorization": "Bearer " + lastmileapi_token}
-            url = f"{API_ENDPOINT}/workbooks/aiconfig?id={workbook_id}"
-            resp = requests.get(url, headers=headers)
+        if resp.status_code != 200:
+            raise Exception(f"Failed to load workbook. Status code: {resp.status_code}")
 
-            if resp.status_code != 200:
-                raise Exception(f"Failed to load workbook. Status code: {resp.status_code}")
+        data = resp.json()
 
-            data = resp.json()
-
-            aiconfigruntime = cls.model_validate_json(data)
-            update_model_parser_registry_with_config_runtime(aiconfigruntime)
-            return aiconfigruntime
+        aiconfigruntime = cls.model_validate_json(data)
+        update_model_parser_registry_with_config_runtime(aiconfigruntime)
+        return aiconfigruntime
 
     async def serialize(
         self,
@@ -337,7 +337,13 @@ class AIConfigRuntime(AIConfig):
             aiconfig_execute_results = aiconfig.get_prompt(prompt_name).outputs
             prompt_data_resolved = await aiconfig.resolve(prompt_name, parameters_dict_used)
 
-            batch_results_formatted.append(tuple([aiconfig_execute_results, prompt_data_resolved, parameters_dict_used]))
+            batch_results_formatted.append(
+                (
+                    aiconfig_execute_results,
+                    prompt_data_resolved,
+                    parameters_dict_used,
+                )
+            )
 
         event = CallbackEvent("on_run_batch_complete", __name__, {"result": batch_results_formatted})
 

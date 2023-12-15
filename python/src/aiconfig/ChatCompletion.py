@@ -39,7 +39,7 @@ def validate_and_add_prompts_to_config(prompts: List[Prompt], aiconfig) -> None:
                     config_prompt.outputs = new_prompt.outputs
                 break
         if not in_config:
-            new_prompt_name = "prompt_{}".format(str(len(aiconfig.prompts)))
+            new_prompt_name = f"prompt_{len(aiconfig.prompts)}"
             new_prompt.name = new_prompt_name
             aiconfig.add_prompt(new_prompt.name, new_prompt)
 
@@ -62,7 +62,7 @@ def extract_outputs_from_response(response) -> List[Output]:
         key: copy.deepcopy(value) for key, value in response.items() if key != "choices"
     }
     for i, choice in enumerate(response.get("choices")):
-        response_without_choices.update({"finish_reason": choice.get("finish_reason")})
+        response_without_choices["finish_reason"] = choice.get("finish_reason")
         output = ExecuteResult(
             **{
                 "output_type": "execute_result",

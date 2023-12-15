@@ -53,7 +53,7 @@ def substring_match(substring: str, case_sensitive: bool = True) -> Metric[str]:
 
 
 def _calculate_brevity(output_datum: str) -> float:
-    if len(output_datum) == 0:
+    if not output_datum:
         raise ValueError("Brevity is meaningless for empty string.")
     return float(len(output_datum))
 

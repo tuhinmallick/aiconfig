@@ -123,20 +123,21 @@ def evaluate(
 def eval_res_to_df(
     eval_res: DatasetEvaluationResult[T_InputDatum, T_OutputDatum],
 ) -> pd.DataFrame:
-    records: list[dict[str, None | str | float | T_InputDatum | T_OutputDatum]] = []
-    for sample_res in eval_res:
-        records.append(
-            dict(
-                input=sample_res.input_datum,
-                aiconfig_output=sample_res.output_datum,
-                value=sample_res.metric_value.value,
-                metric_id=sample_res.metric_value.metric_metadata.id,
-                metric_name=sample_res.metric_value.metric_metadata.name,
-                metric_description=sample_res.metric_value.metric_metadata.description,
-                best_possible_value=sample_res.metric_value.metric_metadata.best_value,
-                worst_possible_value=sample_res.metric_value.metric_metadata.worst_value,
-            )
+    records: list[
+        dict[str, None | str | float | T_InputDatum | T_OutputDatum]
+    ] = [
+        dict(
+            input=sample_res.input_datum,
+            aiconfig_output=sample_res.output_datum,
+            value=sample_res.metric_value.value,
+            metric_id=sample_res.metric_value.metric_metadata.id,
+            metric_name=sample_res.metric_value.metric_metadata.name,
+            metric_description=sample_res.metric_value.metric_metadata.description,
+            best_possible_value=sample_res.metric_value.metric_metadata.best_value,
+            worst_possible_value=sample_res.metric_value.metric_metadata.worst_value,
         )
+        for sample_res in eval_res
+    ]
     df = pd.DataFrame.from_records(records)  # type: ignore[no-untyped-call]
     if len(df) == 0:
         return df
@@ -224,8 +225,11 @@ async def run_aiconfig_helper(
     }
 
     try:
-        out = Ok(await runtime.run_and_get_output_text(prompt_name, params, run_with_dependencies=True))  # type: ignore[fixme, no-untyped-call]
-        return out
+        return Ok(
+            await runtime.run_and_get_output_text(
+                prompt_name, params, run_with_dependencies=True
+            )
+        )
     except Exception as e:
         return cu.ErrWithTraceback(e)
 

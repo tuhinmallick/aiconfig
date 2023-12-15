@@ -8,13 +8,13 @@ class MockModelParser(ModelParser):
     def id(self):
         return "mock_model_parser"
 
-    def serialize(**kwargs):
+    def serialize(self):
         return
 
-    def deserialize(**kwargs):
+    def deserialize(self):
         return
 
-    def run(**kwargs):
+    def run(self):
         return
 
     def get_output_text():

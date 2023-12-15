@@ -11,8 +11,7 @@ from .util.mock_parser import MockModelParser
 
 @pytest.fixture
 def ai_config_runtime():
-    runtime = AIConfigRuntime.create("Untitled AIConfig")
-    return runtime
+    return AIConfigRuntime.create("Untitled AIConfig")
 
 
 class TestModelParserRegistry:
@@ -135,7 +134,7 @@ class TestModelParserRegistry:
 
         # Attempt to retrieve the removed model parser
         with pytest.raises(KeyError):
-            parser = ModelParserRegistry.get_model_parser("model-8") == None
+            parser = ModelParserRegistry.get_model_parser("model-8") is None
 
     def test_clear_registry(self):
         # Create model parsers

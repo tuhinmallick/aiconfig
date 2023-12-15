@@ -106,21 +106,19 @@ def get_parameters_in_template(template) -> dict:
 def validate_params(params: dict):
     """params must contain only letters, numbers, and underscores"""
     """dot notation will allow .input and .output"""
-    for param in params:
-        if isinstance(params[param], dict):
-            if len(set(params[param].values()) - set(["input", "output"])) > 0:
-                raise Exception("Invalid parameter: {}".format(param))
-        else:
-            if not re.match("^[a-zA-Z0-9_.]*$", params[param]):
-                raise Exception("Invalid parameter: {}".format(param))
+    for param, value in params.items():
+        if isinstance(value, dict):
+            if len(set(params[param].values()) - {"input", "output"}) > 0:
+                raise Exception(f"Invalid parameter: {param}")
+        elif not re.match("^[a-zA-Z0-9_.]*$", params[param]):
+            raise Exception(f"Invalid parameter: {param}")
 
 
 def resolve_parametrized_prompt(raw_prompt, params):
     """Paramterizes input Prompt"""
     compiler = Compiler()
     template = compiler.compile(raw_prompt)
-    resolved_prompt = template(params)
-    return resolved_prompt
+    return template(params)
 
 
 def find_dependencies_in_prompt(
@@ -141,7 +139,7 @@ def find_dependencies_in_prompt(
     parameter_names = set(parameters_in_template.keys())
 
     dependencies = set()
-    for i, prompt in enumerate(prompt_list):
+    for prompt in prompt_list:
         # Stop searching for dependencies once the current prompt is reached
         if prompt.name == current_prompt_name:
             break
@@ -209,8 +207,7 @@ def resolve_parameters(params, prompt: Prompt, ai_config: "AIConfig"):
         dict: Returns resolved prompt for constructing completion params, or for inference.
     """
 
-    resolved_prompt = resolve_prompt(prompt, params, ai_config)
-    return resolved_prompt
+    return resolve_prompt(prompt, params, ai_config)
 
 
 def get_prompt_template(prompt: Prompt, aiconfig: "AIConfigRuntime"):

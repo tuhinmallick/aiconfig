@@ -167,12 +167,10 @@ class PaLMTextParser(ParameterizedModelParser):
         aiconfig: "AIConfigRuntime",
         output: Optional[Output] = None,
     ) -> str:
-        if output is not None:
-            return output.data
-        else:
+        if output is None:
             # Get Last Output
             output = aiconfig.get_latest_output(prompt)
-            return output.data
+        return output.data
 
 
 class PaLMChatParser(ParameterizedModelParser):
@@ -264,9 +262,9 @@ class PaLMChatParser(ParameterizedModelParser):
         completion_data["messages"] = []
 
         # Default to always use chat contextjkl;
-        if not hasattr(prompt.metadata, "remember_chat_context") or (
-            hasattr(prompt.metadata, "remember_chat_context")
-            and prompt.metadata.remember_chat_context != False
+        if (
+            not hasattr(prompt.metadata, "remember_chat_context")
+            or prompt.metadata.remember_chat_context != False
         ):
             # handle chat history. check previous prompts for the same model. if same model, add prompt and its output to completion data if it has a completed output
             for i, previous_prompt in enumerate(aiconfig.prompts):
@@ -366,14 +364,10 @@ class PaLMChatParser(ParameterizedModelParser):
         if not output:
             return ""
 
-        if output.output_type == "execute_result":
-            message = output.data
-            if message.get("content"):
-                return message.get("content")
-            else:
-                return ""
-        else:
+        if output.output_type != "execute_result":
             return ""
+        message = output.data
+        return message.get("content") if message.get("content") else ""
 
 
 def refine_chat_completion_params(model_settings):
@@ -389,12 +383,11 @@ def refine_chat_completion_params(model_settings):
         "context",
     }
 
-    completion_data = {}
-    for key in model_settings:
-        if key.lower() in supported_keys:
-            completion_data[key.lower()] = model_settings[key]
-
-    return completion_data
+    return {
+        key.lower(): model_settings[key]
+        for key in model_settings
+        if key.lower() in supported_keys
+    }
 
 
 def refine_completion_params(model_settings):
@@ -410,9 +403,8 @@ def refine_completion_params(model_settings):
         "context",
     }
 
-    completion_data = {}
-    for key in model_settings:
-        if key.lower() in supported_keys:
-            completion_data[key.lower()] = model_settings[key]
-
-    return completion_data
+    return {
+        key.lower(): model_settings[key]
+        for key in model_settings
+        if key.lower() in supported_keys
+    }

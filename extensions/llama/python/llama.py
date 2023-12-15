@@ -72,15 +72,15 @@ class LlamaModelParser(ParameterizedModelParser):
 
     async def _run_inference_helper(self, model_input, options) -> ExecuteResult:
         llm = Llama(self.model_path)
-        acc = ""
         stream = options.stream if options else True
         if stream:
+            acc = ""
             for res in llm(model_input, stream=True):
                 raw_data = res["choices"][0]
                 data = raw_data["text"]
-                index = int(raw_data["index"])
                 acc += data
                 if options:
+                    index = int(raw_data["index"])
                     options.stream_callback(data, acc, index)
             print(flush=True)
             return ExecuteResult(output_type="execute_result", data=[acc], metadata={})

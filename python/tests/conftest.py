@@ -96,7 +96,7 @@ def mock_openai_chat_completion(**kwargs):
     for input_params, response in response_map_list:
         if kwargs == input_params:
             return response
-    raise Exception("Unexpected arguments:\n {}".format(kwargs))
+    raise Exception(f"Unexpected arguments:\n {kwargs}")
 
 
 @pytest.fixture
@@ -120,11 +120,9 @@ def set_temporary_env_vars():
     # Define the environment variables to be manipulated
     env_vars_to_set = {"OPENAI_API_KEY"}
 
-    # Store the original values of the environment variables
-    original_env_values = {}
-    for env_var in env_vars_to_set:
-        original_env_values[env_var] = os.environ.get(env_var)
-
+    original_env_values = {
+        env_var: os.environ.get(env_var) for env_var in env_vars_to_set
+    }
     try:
         # Set fake values for the environment variables
         for env_var in env_vars_to_set:

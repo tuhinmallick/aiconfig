@@ -65,15 +65,14 @@ def test_template_with_multiple_parameters(template_with_params):
 
 @pytest.fixture
 def prompt_list_with_5_prompts():
-    prompt_list = [
+    return [
         Prompt(
-            name="prompt{}".format(i),
+            name=f"prompt{i}",
             input="I am the {i}'ths prompt's input".format(i=i),
             metadata=PromptMetadata(model="This Model Doesn't exist"),
         )
         for i in range(5)
     ]
-    return prompt_list
 
 
 def test_find_dependencies_in_prompt(prompt_list_with_5_prompts):
