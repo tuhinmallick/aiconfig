@@ -1,0 +1,817 @@
+repo_name: tuhinmallick/aiconfig
+report_id: a5cf3044a535ee3f1cd9c8007e977e2e
+version: 0.1
+repo_type: Public
+timestamp: '2024-02-29T20:07:05+00:00'
+requested_by: andrew-lastmile
+provider: github
+branch: main
+detected_tools_count: 61
+tools:
+- name: CSS 3
+  description: The latest evolution of the Cascading Style Sheets language
+  website_url: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/6727/css.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig
+  detection_source: Repo Metadata
+- name: Handlebars.js
+  description: Minimal Templating on Steroids
+  website_url: http://handlebarsjs.com/
+  version: 4.7.8
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Templating Languages & Extensions
+  image_url: https://img.stackshare.io/service/1143/Handlebars.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cli/aiconfig-editor/yarn.lock
+  detection_source: typescript/package.json
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-09-28 14:53:40.000000000 Z
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/tuhinmallick/aiconfig
+  detection_source: Repo Metadata
+- name: Python
+  description: A clear and powerful object-oriented programming language, comparable
+    to Perl, Ruby, Scheme, or Java.
+  website_url: https://www.python.org
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/993/pUBY5pVj.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig
+  detection_source: Repo Metadata
+- name: TypeScript
+  description: A superset of JavaScript that compiles to clean JavaScript output
+  website_url: http://www.typescriptlang.org
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source_url: https://github.com/tuhinmallick/aiconfig
+  detection_source: Repo Metadata
+- name: Next.js
+  description: A small framework for server-rendered universal JavaScript apps
+  website_url: https://nextjs.org/
+  version: 14.0.2
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/5936/nextjs.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cli/aiconfig-editor/yarn.lock
+  detection_source: cli/aiconfig-editor/package.json
+  last_updated_by: Suyog Sonwalkar
+  last_updated_on: 2023-11-27 19:02:52.000000000 Z
+- name: Node.js
+  description: A platform built on Chrome's JavaScript runtime for easily building
+    fast, scalable network applications
+  website_url: http://nodejs.org/
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cli/aiconfig-editor/package.json
+  detection_source: cli/aiconfig-editor/package.json
+  last_updated_by: Suyog Sonwalkar
+  last_updated_on: 2023-11-27 19:02:52.000000000 Z
+- name: React
+  description: A JavaScript library for building user interfaces
+  website_url: https://reactjs.org/
+  version: 18.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript UI Libraries
+  image_url: https://img.stackshare.io/service/1020/OYIaJ1KK.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/aiconfig-docs/yarn.lock
+  detection_source: aiconfig-docs/package.json
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-11-10 04:52:06.000000000 Z
+- name: Sass
+  description: Syntactically Awesome Style Sheets
+  website_url: http://sass-lang.com/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: CSS Pre-processors / Extensions
+  image_url: https://img.stackshare.io/service/1171/jCR2zNJV.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/aiconfig-docs/package.json
+  detection_source: aiconfig-docs/package.json
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-10-31 21:09:43.000000000 Z
+- name: Babel
+  description: Use next generation JavaScript, today.
+  website_url: http://babeljs.io/
+  version: 7.23.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: JavaScript Compilers
+  image_url: https://img.stackshare.io/service/2739/-1wfGjNw.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/aiconfig-docs/yarn.lock
+  detection_source: aiconfig-docs/babel.config.js
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-10-31 21:09:43.000000000 Z
+- name: Dotenv
+  description: Loads environment variables from .env for Nodejs projects
+  website_url: https://github.com/motdotla/dotenv
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Server Configuration and Automation
+  image_url: https://img.stackshare.io/service/8067/default_90dcb1286af7685c68df319c764b80704df1155b.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/typescript/package.json
+  detection_source: typescript/package.json
+  last_updated_by: Ankush Pala  ankush@lastmileai.dev
+  last_updated_on: 2023-11-14 16:27:23.000000000 Z
+- name: ESLint
+  description: The fully pluggable JavaScript code quality tool
+  website_url: http://eslint.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/3337/Q4L7Jncy.jpg
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cli/aiconfig-editor/package.json
+  detection_source: cli/aiconfig-editor/package.json
+  last_updated_by: Suyog Sonwalkar
+  last_updated_on: 2023-11-27 19:02:52.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig
+  detection_source: Repo Metadata
+- name: GitHub Actions
+  description: Automate your workflow from idea to production
+  website_url: https://github.com/features/actions
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Continuous Integration
+  image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/.github/workflows/deploy-docs.yml
+  detection_source: ".github/workflows/deploy-docs.yml"
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-10-31 21:09:43.000000000 Z
+- name: Jest
+  description: Painless JavaScript Unit Testing
+  website_url: http://facebook.github.io/jest/
+  version: 29.7.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Javascript Testing Framework
+  image_url: https://img.stackshare.io/service/830/jest.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/typescript/yarn.lock
+  detection_source: typescript/package.json
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-09-05 00:21:51.000000000 Z
+- name: PyPI
+  description: A repository of software for the Python programming language
+  website_url: https://pypi.org/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Hosted Package Repository
+  image_url: https://img.stackshare.io/service/12572/-RIWgodF_400x400.jpg
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/python/requirements.txt
+  detection_source: python/requirements.txt
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-10-13 17:49:32.000000000 Z
+- name: Pylint
+  description: Source-code, bug and quality checker for the Python programming language
+  website_url: https://www.pylint.org/
+  license: GPL-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/4837/py.jpg
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/extensions/HuggingFace/python/requirements.txt
+  detection_source: extensions/HuggingFace/python/requirements.txt
+  last_updated_by: Rossdan Craig rossdan@lastmileai.dev
+  last_updated_on: 2023-12-14 22:32:34.000000000 Z
+- name: Yarn
+  description: A new package manager for JavaScript
+  website_url: https://yarnpkg.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/5848/44mC-kJ3.jpg
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/aiconfig-docs/yarn.lock
+  detection_source: aiconfig-docs/yarn.lock
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-10-31 21:09:43.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/typescript/package.json
+  detection_source: typescript/package.json
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-09-05 00:21:51.000000000 Z
+- name: pytest
+  description: A full-featured Python testing tool to help you write better programs
+  website_url: http://pytest.org/latest/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Testing Frameworks
+  image_url: https://img.stackshare.io/service/4586/Lu99Qe0Z_400x400.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/python/requirements-dev.txt
+  detection_source: python/requirements-dev.txt
+  last_updated_by: Ankush Pala  ankush@lastmileai.dev
+  last_updated_on: 2023-10-30 21:22:16.000000000 Z
+- name: Jupyter
+  description: Multi-language interactive computing environments.
+  website_url: http://jupyter.org
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Application Utilities
+  sub_category: Data Science Notebooks
+  image_url: https://img.stackshare.io/service/4190/fGBUdNf__400x400.jpg
+  detection_source_url: https://github.com/tuhinmallick/aiconfig
+  detection_source: Repo Metadata
+- name: Lodash
+  description: A JavaScript utility library
+  website_url: https://lodash.com
+  version: 4.17.21
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/service/2438/lodash.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/aiconfig-docs/yarn.lock
+  detection_source: typescript/package.json
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-09-28 14:53:40.000000000 Z
+- name: OpenAI
+  description: Creating safe AGI that benefits all
+  website_url: https://openai.com/
+  version: 4.17.4
+  open_source: false
+  hosted_saas: false
+  category: Communications
+  sub_category: Large Language Models
+  image_url: https://img.stackshare.io/service/48786/default_8b1119bcbb159cebebc2f6cfc9cd2e359b169d22.jpg
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cli/aiconfig-editor/yarn.lock
+  detection_source: cookbooks/Basic-Prompt-Routing/requirements.txt
+  last_updated_by: Tanya Rai
+  last_updated_on: 2023-11-10 07:18:47.000000000 Z
+- name: Streamlit
+  description: A Python app framework built specifically for Machine Learning and
+    Data Science teams
+  website_url: https://streamlit.io
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Application Utilities
+  sub_category: Machine Learning Tools
+  image_url: https://img.stackshare.io/service/11393/default_67e251b5860795095fe91618cf3ef8d09257469a.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cookbooks/Basic-Prompt-Routing/requirements.txt
+  detection_source: cookbooks/Basic-Prompt-Routing/requirements.txt
+  last_updated_by: Tanya Rai
+  last_updated_on: 2023-11-10 07:18:47.000000000 Z
+- name: Torch
+  description: An open-source machine learning library and a script language based
+    on the Lua programming language
+  website_url: http://torch.ch/
+  open_source: true
+  hosted_saas: false
+  category: Application Utilities
+  sub_category: Machine Learning Tools
+  image_url: https://img.stackshare.io/service/4475/hpYQzO_U_400x400.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/extensions/HuggingFace/python/requirements.txt
+  detection_source: extensions/HuggingFace/python/requirements.txt
+  last_updated_by: Rossdan Craig rossdan@lastmileai.dev
+  last_updated_on: 2023-12-14 22:32:34.000000000 Z
+- name: Winston
+  description: a multi-transport async logging library for node.js
+  website_url: https://github.com/winstonjs/winston
+  open_source: false
+  hosted_saas: false
+  image_url: https://img.stackshare.io/service/6668/9682013.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/typescript/package.json
+  detection_source: typescript/package.json
+  last_updated_by: Ankush Pala  ankush@lastmileai.dev
+  last_updated_on: 2023-11-14 16:27:23.000000000 Z
+- name: axios
+  description: Promise based HTTP client for the browser and node.js
+  website_url: https://github.com/mzabriskie/axios
+  version: 0.27.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/no-img-open-source.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/aiconfig-docs/yarn.lock
+  detection_source: typescript/package.json
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-10-09 01:25:24.000000000 Z
+- name: "@babel/preset-typescript"
+  description: Babel preset for TypeScript
+  package_url: https://www.npmjs.com/@babel/preset-typescript
+  version: 7.23.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16084/default_d4e765f8a43dcfd232c8b9ee9732058bc27c727a.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/aiconfig-docs/yarn.lock
+  detection_source: typescript/package.json
+  last_updated_by: Rossdan Craig rossdan@lastmileai.dev
+  last_updated_on: 2023-12-12 22:07:18.000000000 Z
+- name: "@mdx-js/react"
+  description: React implementation for MDX
+  package_url: https://www.npmjs.com/@mdx-js/react
+  version: 3.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17624/default_61a119a7701a0e8224ca0e4dce7ff951cd67972f.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/aiconfig-docs/yarn.lock
+  detection_source: aiconfig-docs/package.json
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-11-10 04:52:06.000000000 Z
+- name: "@types/jest"
+  description: TypeScript definitions for Jest
+  package_url: https://www.npmjs.com/@types/jest
+  version: 29.5.10
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15840/default_004658cda9b38934f2871435e9dc15608c86e8be.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/typescript/yarn.lock
+  detection_source: typescript/package.json
+  last_updated_by: Rossdan Craig rossdan@lastmileai.dev
+  last_updated_on: 2023-12-12 22:07:18.000000000 Z
+- name: "@types/lodash"
+  description: TypeScript definitions for Lo-Dash
+  package_url: https://www.npmjs.com/@types/lodash
+  version: 4.14.201
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15945/default_54b691c123fc8979741e800e4dcd3936c0f3b246.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cookbooks/HuggingFace/typescript/package-lock.json
+  detection_source: cookbooks/HuggingFace/typescript/package.json
+  last_updated_by: Ankush Pala  ankush@lastmileai.dev
+  last_updated_on: 2023-11-11 16:42:40.000000000 Z
+- name: "@types/node"
+  description: TypeScript definitions for Node.js
+  package_url: https://www.npmjs.com/@types/node
+  version: 20.8.9
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15809/default_5e5e8ac63beda29f31f1844df64d4b8247570a66.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/aiconfig-docs/yarn.lock
+  detection_source: cli/aiconfig-editor/package.json
+  last_updated_by: Suyog Sonwalkar
+  last_updated_on: 2023-11-27 19:25:30.000000000 Z
+- name: "@types/react"
+  description: TypeScript definitions for React
+  package_url: https://www.npmjs.com/@types/react
+  version: 18.2.33
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15894/default_1d65e37e65b7f80761374f0202776043277d505d.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/aiconfig-docs/yarn.lock
+  detection_source: aiconfig-docs/package.json
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-11-10 04:52:06.000000000 Z
+- name: "@types/react-dom"
+  description: TypeScript definitions for React
+  package_url: https://www.npmjs.com/@types/react-dom
+  version: 18.2.15
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15946/default_54b691c123fc8979741e800e4dcd3936c0f3b246.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cli/aiconfig-editor/yarn.lock
+  detection_source: cli/aiconfig-editor/package.json
+  last_updated_by: Ryan Holinshead
+  last_updated_on: 2023-12-13 19:53:21.000000000 Z
+- name: "@typescript-eslint/eslint-plugin"
+  description: TypeScript plugin for ESLint
+  package_url: https://www.npmjs.com/@typescript-eslint/eslint-plugin
+  version: 6.11.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15982/default_8b5680d4e916298d08363c291a0d6e34c07ceb15.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/extensions/llama/typescript/yarn.lock
+  detection_source: extensions/llama/typescript/package.json
+  last_updated_by: Ryan Holinshead
+  last_updated_on: 2023-11-20 16:19:10.000000000 Z
+- name: "@typescript-eslint/parser"
+  description: An ESLint custom parser which leverages TypeScript ESTree
+  package_url: https://www.npmjs.com/@typescript-eslint/parser
+  version: 6.10.0
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15980/default_732016a20524708efe7a4c77497fe9bfeea19ba6.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cli/aiconfig-editor/yarn.lock
+  detection_source: extensions/llama/typescript/package.json
+  last_updated_by: Ryan Holinshead
+  last_updated_on: 2023-11-20 16:19:10.000000000 Z
+- name: commander
+  description: The complete solution for node.js command-line programs
+  package_url: https://www.npmjs.com/commander
+  version: 10.0.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15829/default_50135978d26eba7c09093ceb23b96d522898e4eb.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/aiconfig-docs/yarn.lock
+  detection_source: cli/package.json
+  last_updated_by: Suyog Sonwalkar
+  last_updated_on: 2023-11-27 19:02:52.000000000 Z
+- name: eslint-config-next
+  description: ESLint configuration used by Next.js
+  package_url: https://www.npmjs.com/eslint-config-next
+  version: 14.0.2
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/npm/image.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cli/aiconfig-editor/yarn.lock
+  detection_source: cli/aiconfig-editor/package.json
+  last_updated_by: Suyog Sonwalkar
+  last_updated_on: 2023-11-27 19:25:30.000000000 Z
+- name: google-auth-library
+  description: Google APIs Authentication Client Library for Node.js
+  package_url: https://www.npmjs.com/google-auth-library
+  version: 9.2.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17925/default_72dbba22ca96f25f78f55f8ea5393222efca5494.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cli/aiconfig-editor/yarn.lock
+  detection_source: typescript/package.json
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-11-17 16:34:04.000000000 Z
+- name: handlebars
+  description: Handlebars provides the power necessary to let you build semantic templates
+    effectively with no frustration
+  package_url: https://www.npmjs.com/handlebars
+  version: 4.7.8
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16013/default_f8be85789693a9901dbcfa43c135c60525ae49a1.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cli/aiconfig-editor/yarn.lock
+  detection_source: typescript/package.json
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-09-28 14:53:40.000000000 Z
+- name: node-fetch
+  description: A light-weight module that brings window.fetch to node.js
+  package_url: https://www.npmjs.com/node-fetch
+  version: 2.7.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15978/default_f49d4c116f8ea0155f4d92673b084378bba02760.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/aiconfig-docs/yarn.lock
+  detection_source: cli/aiconfig-editor/package.json
+  last_updated_by: Suyog Sonwalkar
+  last_updated_on: 2023-11-27 19:25:30.000000000 Z
+- name: openai
+  description: The official TypeScript library for the OpenAI API
+  package_url: https://www.npmjs.com/openai
+  version: 4.17.4
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/npm/image.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cli/aiconfig-editor/yarn.lock
+  detection_source: cookbooks/Function-Calling-OpenAI/typescript/package.json
+  last_updated_by: Ryan Holinshead
+  last_updated_on: 2023-12-13 17:24:48.000000000 Z
+- name: react-dom
+  description: React package for working with the DOM
+  package_url: https://www.npmjs.com/react-dom
+  version: 18.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15808/default_14fd11531839d935f920b6d55bd6f3528c890ad7.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/aiconfig-docs/yarn.lock
+  detection_source: aiconfig-docs/package.json
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-11-10 04:52:06.000000000 Z
+- name: ts-jest
+  description: A preprocessor with source maps support to help use TypeScript with
+    Jest
+  package_url: https://www.npmjs.com/ts-jest
+  version: 29.1.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15864/default_6743ba96cf149a3c3c68a185199f9705d6eff80e.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/typescript/yarn.lock
+  detection_source: typescript/package.json
+  last_updated_by: Rossdan Craig rossdan@lastmileai.dev
+  last_updated_on: 2023-12-12 22:07:18.000000000 Z
+- name: ts-node
+  description: TypeScript execution environment and REPL for node.js
+  package_url: https://www.npmjs.com/ts-node
+  version: 10.9.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15830/default_6743ba96cf149a3c3c68a185199f9705d6eff80e.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cli/aiconfig-editor/yarn.lock
+  detection_source: cli/package.json
+  last_updated_by: Suyog Sonwalkar
+  last_updated_on: 2023-11-27 19:02:52.000000000 Z
+- name: typedoc
+  description: Create api documentation for TypeScript projects
+  package_url: https://www.npmjs.com/typedoc
+  version: 0.23.28
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15983/default_8b5680d4e916298d08363c291a0d6e34c07ceb15.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/typescript/yarn.lock
+  detection_source: typescript/package.json
+  last_updated_by: Rossdan Craig rossdan@lastmileai.dev
+  last_updated_on: 2023-12-12 22:07:18.000000000 Z
+- name: uuid
+  description: RFC4122
+  package_url: https://www.npmjs.com/uuid
+  version: 8.3.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15916/default_e0a4fb1126d7400f419f0931cf1669947a5bc552.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/aiconfig-docs/yarn.lock
+  detection_source: typescript/package.json
+  last_updated_by: Ankush Pala  ankush@lastmileai.dev
+  last_updated_on: 2023-11-14 16:27:23.000000000 Z
+- name: winston
+  description: A logger for just about everything
+  package_url: https://www.npmjs.com/winston
+  version: 3.11.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16003/default_261820f5687b4c88a3e8f95c71b5e8dccd34c1d7.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cookbooks/Function-Calling-OpenAI/typescript/yarn.lock
+  detection_source: typescript/package.json
+  last_updated_by: Ankush Pala  ankush@lastmileai.dev
+  last_updated_on: 2023-11-14 16:27:23.000000000 Z
+- name: asyncio
+  description: Reference implementation of PEP 3156
+  package_url: https://pypi.org/project/asyncio
+  license: Python-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/cookbooks/Basic-Prompt-Routing/requirements.txt
+  detection_source: cookbooks/Basic-Prompt-Routing/requirements.txt
+  last_updated_by: Tanya Rai
+  last_updated_on: 2023-11-10 07:18:47.000000000 Z
+- name: black
+  description: The uncompromising code formatter
+  package_url: https://pypi.org/project/black
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20099/default_029b9bbfb6be2cd34bebeda5b8e1e80a1d22441c.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/extensions/HuggingFace/python/requirements.txt
+  detection_source: extensions/HuggingFace/python/requirements.txt
+  last_updated_by: Rossdan Craig rossdan@lastmileai.dev
+  last_updated_on: 2023-12-14 22:32:34.000000000 Z
+- name: flake8
+  description: 'The modular source code checker: pep8, pyflakes and co'
+  package_url: https://pypi.org/project/flake8
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19920/default_c8be5290cb8d8a8b578535a2c6475d1057ff4ea4.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/python/requirements.txt
+  detection_source: python/requirements.txt
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-10-13 17:49:32.000000000 Z
+- name: huggingface-hub
+  description: Client library to download and publish models
+  package_url: https://pypi.org/project/huggingface-hub
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/extensions/HuggingFace/python/requirements.txt
+  detection_source: extensions/HuggingFace/python/requirements.txt
+  last_updated_by: Rossdan Craig rossdan@lastmileai.dev
+  last_updated_on: 2023-12-14 22:32:34.000000000 Z
+- name: hypothesis
+  description: A library for property-based testing
+  package_url: https://pypi.org/project/hypothesis
+  version: 6.91.0
+  license: MPL-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20178/default_cce94831138206ab61e361b18c1d852a1e5ab6a1.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/python/requirements.txt
+  detection_source: python/requirements.txt
+  last_updated_by: Jonathan Lessinger
+  last_updated_on: 2023-12-07 15:12:05.000000000 Z
+- name: mock
+  description: Rolling backport of unittest.mock for all Pythons
+  package_url: https://pypi.org/project/mock
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19876/default_8902c10687fbcd6273bdbe119fff40fa1180763f.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/python/requirements.txt
+  detection_source: python/requirements.txt
+  last_updated_by: Jonathan Lessinger
+  last_updated_on: 2023-11-22 00:16:01.000000000 Z
+- name: prompt_toolkit
+  description: Library for building powerful interactive command lines in Python
+  package_url: https://pypi.org/project/prompt_toolkit
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19973/default_7bdb5665dee17d53e3a12b8e2b533bcdb6f55a47.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/python/requirements.txt
+  detection_source: python/requirements.txt
+  last_updated_by: Jonathan Lessinger
+  last_updated_on: 2023-11-22 00:16:01.000000000 Z
+- name: pybars3
+  description: Handlebars.js templating for Python 3 and 2
+  package_url: https://pypi.org/project/pybars3
+  license: LGPL-3.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/python/requirements.txt
+  detection_source: python/requirements.txt
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-10-13 17:49:32.000000000 Z
+- name: pydantic
+  description: Data validation and settings management using python 3.6 type hinting
+  package_url: https://pypi.org/project/pydantic
+  version: '2.1'
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20022/default_b0d1a54f127d7017fce41c15f5e85568fb7019ed.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/python/requirements.txt
+  detection_source: python/requirements.txt
+  last_updated_by: Sarmad Qadri
+  last_updated_on: 2023-10-13 17:49:32.000000000 Z
+- name: pytest-asyncio
+  description: Pytest support for asyncio
+  package_url: https://pypi.org/project/pytest-asyncio
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/python/requirements.txt
+  detection_source: python/requirements.txt
+  last_updated_by: Jonathan Lessinger
+  last_updated_on: 2023-11-28 18:53:19.000000000 Z
+- name: python-dotenv
+  description: Add .env support to your django/flask apps in development and deployments
+  package_url: https://pypi.org/project/python-dotenv
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20095/default_3141eabecdd8efa55de73a33c43f2ac0d5bbf954.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/python/requirements.txt
+  detection_source: python/requirements.txt
+  last_updated_by: Ankush Pala  ankush@lastmileai.dev
+  last_updated_on: 2023-10-30 21:22:16.000000000 Z
+- name: requests
+  description: Python HTTP for Humans
+  package_url: https://pypi.org/project/requests
+  version: 2.30.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19826/default_d7c684bf2673f008a9f02ac93901229297a22d7e.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/python/requirements.txt
+  detection_source: python/requirements.txt
+  last_updated_by: Rossdan Craig rossdan@lastmileai.dev
+  last_updated_on: 2023-11-30 17:39:55.000000000 Z
+  vulnerabilities:
+  - name: Unintended leak of Proxy-Authorization header in requests
+    cve_id: CVE-2023-32681
+    cve_url: https://github.com/advisories/GHSA-j8r2-6x86-q33q
+    detected_date: May 23
+    severity: moderate
+    first_patched: 2.31.0
+- name: torchvision
+  description: Image and video datasets and models for torch deep learning
+  package_url: https://pypi.org/project/torchvision
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20377/default_86c41789cbd5dc6b872b122419740f58f5d2f18a.png
+  detection_source_url: https://github.com/tuhinmallick/aiconfig/blob/main/extensions/HuggingFace/python/requirements.txt
+  detection_source: extensions/HuggingFace/python/requirements.txt
+  last_updated_by: Rossdan Craig rossdan@lastmileai.dev
+  last_updated_on: 2023-12-14 22:32:34.000000000 Z
