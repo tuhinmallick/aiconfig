@@ -64,7 +64,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [tuhinmallick/aiconfig](https://github.com/tuhinmallick/aiconfig)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|61<br/>Tools used|02/19/24 <br/>Report generated|
+|61<br/>Tools used|02/29/24 <br/>Report generated|
 |------|------|
 </div>
 
